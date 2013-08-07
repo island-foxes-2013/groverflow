@@ -13,3 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+.rspec
+.rvmrc
+.sass-cache
+*.swp
+.DS_Store

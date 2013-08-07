@@ -5,8 +5,8 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
+gem 'pg'
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,7 +20,21 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara', '~> 2.1.0'
+  # gem 'capybara-webkit', '~> 1.0.0'
+  # gem 'selenium-webdriver'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+end
+
 gem 'jquery-rails'
+gem 'debugger'
+
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
