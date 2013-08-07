@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'user'
 
 describe User do
 
@@ -20,17 +19,6 @@ describe User do
       user.password_digest.to_s.should_not eq "password" #not storing the real password in the database
     end
 
-    
-    
   end
-
-  
-
-
-
-
-
-
-
 
 end
