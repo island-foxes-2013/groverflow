@@ -1,7 +1,9 @@
-%h1 Hello World
+.container
+  %h1 Groverflow!
 
-%ul
--if @questions
-  -@questions.each do |question|
-    %li
-      =link_to question.title, question
+  = image_tag "http://upload.wikimedia.org/wikipedia/en/thumb/b/be/Grover.JPG/220px-Grover.JPG"
+  %ul.questions_list
+    -if @questions
+      -@questions.each do |question|
+        %li.question
+          =link_to question.title, question

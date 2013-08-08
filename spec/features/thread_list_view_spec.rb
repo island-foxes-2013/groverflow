@@ -12,6 +12,6 @@ describe "thread list" do
   it {should have_css("li.question")}
 
   # I think Capybara's matchers should figure this out
-  it {should have_link("/questions/")}
+  it {should have_link("/question/")}
 
 end
