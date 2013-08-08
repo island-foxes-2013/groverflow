@@ -1,1 +1,7 @@
 %h1 Hello World
+
+%ul
+-if @questions
+  -@questions.each do |question|
+    %li
+      =link_to question.title, question
