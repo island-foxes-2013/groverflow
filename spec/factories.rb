@@ -14,9 +14,11 @@ FactoryGirl.define do
 
   factory :answer do
     content "Work the shaft"
-    best_answer true
     user_id 1
     question_id 1
+  end
+
+  factory :invalid_answer, class: Answer do
   end
 
 end

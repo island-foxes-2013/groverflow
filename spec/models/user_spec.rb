@@ -12,7 +12,7 @@ describe User do
   context "#new" do
     subject { user }
     it { should be_a User }
-    its(:username) { should eq 'grover'}
+    its(:username) { should eq FactoryGirl.attributes_for(:user)[:username]}
 
     it 'should have an encrpted password' do
       user.password_digest.should eq "password"  #encryption method works
