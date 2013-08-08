@@ -22,7 +22,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'capybara', '~> 2.1.0'
+  gem 'capybara'
   # gem 'capybara-webkit', '~> 1.0.0'
   # gem 'selenium-webdriver'
   gem 'factory_girl_rails'
