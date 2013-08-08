@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'log in page' do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { create(:user) }
 
   scenario 'user visits the login page' do 
     visit login_path

@@ -37,10 +37,11 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+  config.include FactoryGirl::Syntax::Methods
 end
 
 def log_in
-  user = FactoryGirl.create(:user)
+  user = create(:user)
   visit login_path
   fill_in :user_email, with: user.email
   fill_in :user_password, with: user.password

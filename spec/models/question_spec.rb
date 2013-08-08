@@ -8,12 +8,12 @@ describe Question do
   it { should have_many(:answers) }
 
     context "#new" do
-      subject { FactoryGirl.build(:question) }
+      subject { build(:question) }
 
       it { should be_a Question }
-      its(:title) { should eq FactoryGirl.attributes_for(:question)[:title] }
-      its(:content) { should eq FactoryGirl.attributes_for(:question)[:content] }
-      its(:user_id) { should eq FactoryGirl.attributes_for(:question)[:user_id] }
+      its(:title) { should eq attributes_for(:question)[:title] }
+      its(:content) { should eq attributes_for(:question)[:content] }
+      its(:user_id) { should eq attributes_for(:question)[:user_id] }
     end
 
 end

@@ -11,7 +11,7 @@ describe Answer do
   describe "#new" do
 
     context "when passed content, user_id, question_id" do
-      let(:answer) { FactoryGirl.build(:answer) }
+      let(:answer) { build(:answer) }
 
       it "should return an instance of answer" do
         expect(answer).to be_an Answer
@@ -21,7 +21,7 @@ describe Answer do
 
     context "when passed no arguments" do
       it 'should throw an error' do
-        expect { FactoryGirl.create(:invalid_answer) }.to raise_error
+        expect { create(:invalid_answer) }.to raise_error
       end 
     end
 

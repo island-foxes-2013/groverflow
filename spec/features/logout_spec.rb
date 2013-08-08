@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'log out' do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { create(:user) }
 
   context 'while on home page and logged in' do
     before do

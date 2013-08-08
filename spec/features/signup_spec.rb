@@ -71,7 +71,7 @@ describe "user sign up" do
       end
 
       it "does not leave signup page" do
-        expect(current_path).to eq new_user_path
+        expect(current_path).to eq '/users'
       end
 
       it{should have_text("Email can't be blank")}
@@ -85,7 +85,7 @@ describe "user sign up" do
       end
 
       it "does not leave signup page" do
-        expect(current_path).to eq new_user_path
+        expect(current_path).to eq '/users'
       end
 
       it{should have_text("Username can't be blank")}
@@ -99,10 +99,10 @@ describe "user sign up" do
       end
 
       it "does not leave signup page" do
-        expect(current_path).to eq new_user_path
+        expect(current_path).to eq '/users'
       end
 
-      it{should have_text("Password can't be blank")}
+      it{should have_text("Password digest can't be blank")}
     end
 
   end

@@ -18,4 +18,8 @@
         -if logged_in?
           %li
             =link_to "Logout", session_path(current_user), {method: :delete}
-    =yield
+    .container
+      %h1 Groverflow!
+
+      = image_tag "http://upload.wikimedia.org/wikipedia/en/thumb/b/be/Grover.JPG/220px-Grover.JPG"
+      =yield

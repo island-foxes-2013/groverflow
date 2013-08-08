@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'when creating a question' do
-  let(:question) { FactoryGirl.build(:question) }
+  let(:question) { build(:question) }
 
   # PLACEHOLDER: sign in
   before(:all) { log_in }
@@ -22,7 +22,7 @@ end
 
 feature 'when viewing all questions' do
 
-  let!(:question) { FactoryGirl.create(:question) }
+  let!(:question) { create(:question) }
 
   before(:all) { log_in }
 
@@ -47,7 +47,7 @@ end
 
 
 # feature 'log in page' do
-#   let(:user) { FactoryGirl.create(:user) }
+#   let(:user) { create(:user) }
 
 #   scenario 'user visits the login page' do 
 #     visit login_path
