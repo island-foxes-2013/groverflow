@@ -21,7 +21,7 @@ describe "user sign up" do
   context "from the signup page" do
     let(:username){Faker::Internet.user_name}
     let(:password){Faker::Internet.password}
-    let(:email){Faker::Internet.email}
+    let(:email){ "jesseclay@gmail.com" }
     before do
       visit new_user_path
     end

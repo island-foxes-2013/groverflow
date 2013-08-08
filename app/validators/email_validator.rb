@@ -12,7 +12,10 @@ class EmailValidator < ActiveModel::EachValidator
     response = RestClient.get "https://api:pubkey-2-5pezoadgsxe0stc4bidm2cq417n-p5"\
     "@api.mailgun.net/v2/address/validate?#{email}"
     mailgun_response = JSON.parse(response) # mailgun returns a string, convert to json
-    mailgun_response["is_valid"] == "true" #check the hash for true (valid email) or false (invalid email) and return boolean result
+    p mailgun_response
+    p mailgun_response["is_valid"]
+    mailgun_response["is_valid"] #check the hash for true (valid email) or false (invalid email) and return boolean result
+
   end
 
 end
