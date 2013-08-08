@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:user][:email])
     user = @user.authenticate(params[:user][:password])
     if user
-      puts "HELLO!"
       session[:user_id] = user.id
       redirect_to root_path, notice: "You. Made it."
     else
