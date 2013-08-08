@@ -1,5 +1,4 @@
 require 'spec_helper'
-# require 'rest-client'
 
 describe "user sign up" do
 
@@ -20,6 +19,9 @@ describe "user sign up" do
   end
 
   context "from the signup page" do
+    let(:username){Faker::Internet.user_name}
+    let(:password){Faker::Internet.password}
+    let(:email){Faker::Internet.email}
     before do
       visit new_user_path
     end
@@ -29,10 +31,10 @@ describe "user sign up" do
     it { should have_field("Username") }
     it { should have_field("Password") }
     it { should have_field("Email") }
+    it {should have_button('Create User')}
 
     context "if an invalid email is submitted" do
-      let(:username){Faker::Internet.user_name}
-      let(:password){Faker::Internet.password}
+      
       before do
         fill_in 'Email', with: "bademail"
         fill_in 'Username', with: username
@@ -47,62 +49,65 @@ describe "user sign up" do
       it "has user fields filled in with previously submitted data"
   
     end
+
+    context "if proper signup information provided" do
+      before do 
+        fill_in 'Email', with: email
+        fill_in 'Username', with: username
+        fill_in 'Password', with: password
+        click_button 'Create User'
+      end
+
+      it "redirects to home page" do
+        expect(current_path).to eq root_path
+      end
+    end
+
+    context "if email blank" do
+      before do 
+        fill_in 'Username', with: username
+        fill_in 'Password', with: password
+        click_button 'Create User'
+      end
+
+      it "does not leave signup page" do
+        expect(current_path).to eq new_user_path
+      end
+
+      it{should have_text("Email can't be blank")}
+    end
+
+    context "if username blank" do
+      before do 
+        fill_in 'Email', with: email
+        fill_in 'Password', with: password
+        click_button 'Create User'
+      end
+
+      it "does not leave signup page" do
+        expect(current_path).to eq new_user_path
+      end
+
+      it{should have_text("Username can't be blank")}
+    end
+
+    context "if password blank" do
+      before do 
+        fill_in 'Email', with: email
+        fill_in 'Username', with: username
+        click_button 'Create User'
+      end
+
+      it "does not leave signup page" do
+        expect(current_path).to eq new_user_path
+      end
+
+      it{should have_text("Password can't be blank")}
+    end
+
   end
 end
 
-it {should have_button('Create User')}
 
-context "if proper signup information provided" do
-  before do 
-    fill_in 'Email', with email
-    fill_in 'Username', with username
-    fill_in 'Password', with password
-    click_button 'Create User'
-  end
 
-  it "redirects to home page" do
-    expect(current_path).to eq root_path
-  end
-end
 
-context "if email blank" do
-  before do 
-    fill_in 'Username', with username
-    fill_in 'Password', with password
-    click_button 'Create User'
-  end
-
-  it "does not leave signup page" do
-    expect(current_path).to eq new_user_path
-  end
-
-  it{should have_text("Email can't be blank")}
-end
-
-context "if username blank" do
-  before do 
-    fill_in 'Email', with email
-    fill_in 'Password', with password
-    click_button 'Create User'
-  end
-
-  it "does not leave signup page" do
-    expect(current_path).to eq new_user_path
-  end
-
-  it{should have_text("Username can't be blank")}
-end
-
-context "if password blank" do
-  before do 
-    fill_in 'Email', with email
-    fill_in 'Username', with username
-    click_button 'Create User'
-  end
-
-  it "does not leave signup page" do
-    expect(current_path).to eq new_user_path
-  end
-
-  it{should have_text("Password can't be blank")}
-end
