@@ -1,4 +1,5 @@
 require 'spec_helper'
+# require 'rest-client'
 
 describe "user sign up" do
 
@@ -39,10 +40,12 @@ describe "user sign up" do
         click_button 'Create User'
       end
 
-      it "does not leave signup page" do
-        expect(current_path).to eq new_user_path
+      it "goes to /users" do
+        expect(current_path).to eq '/users'
       end
 
+      it "has user fields filled in with previously submitted data"
+  
     end
   end
 end

@@ -1,12 +1,14 @@
-= form_for @user do |f|
-  = f.label :email
-  = f.text_field :email, :required => true
-  %br
-  = f.label :username
-  = f.text_field :username
-  %br
-  = f.label :password
-  = f.text_field :password
-  %br
-  = f.submit
+.container
+  .col-lg-12
+    = form_for @user do |f|
+      = f.label :email
+      = f.text_field :email
+      %br
+      = f.label :username
+      = f.text_field :username
+      %br
+      = f.label :password
+      = f.text_field :password
+      %br
+      = f.submit
 
