@@ -13,8 +13,6 @@ class UsersController < ApplicationController
       render new_user_path
     else
       self.current_user = @user
-      p "this is the current user #{current_user}"
-      p "session ===== #{session}"
       redirect_to root_path
     end
   end
