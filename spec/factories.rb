@@ -1,7 +1,9 @@
+require 'faker'
+
 FactoryGirl.define do
   
   factory :question do
-    title "Test Title"
+    title {  }
     content "lorem ipsum"
     user_id 1
   end
