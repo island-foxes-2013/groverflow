@@ -8,5 +8,5 @@ Groverflow::Application.load_tasks
 
 desc "reset everything"
 task "reset" do
-  exec "rake db:drop && rake db:create && rake db:migrate && rake db:seed"
+  exec "rake db:drop && rake db:create && rake db:migrate && rake db:seed && rake db:test:prepare"
 end
