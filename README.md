@@ -4,8 +4,12 @@
 
 Show of hands. 
 
-Exactly. This is a love connection for your favorite street. The sunniest street where the air is sweet. Of course, I am talking about Sesame Street (not the chinatown one). 
+Exactly. This is a love connection for your favorite street. The sunniest street where the air is sweet. Of course, I am talking about Sesame Street (not the chinatown one). This web experience gives the chance for recently pubescent muppets seeking intimate adventure and fun to be endowed with the personal knowledge the elder muppets have accumulated throughout their late-night romps on Sesame Street. Muppet users can ask questions, 'Are Big Bird's Wings Clipped?' and receive answers from any other muppet user who may have some tips and tricks to bestow on their curious counterparts. Muppet users can upvote advice they find helpful and downvote advice that isn't helpful or only applies to humans. There must be no human users, though we haven't found the active record validation for that just yet. Muppet users can also comment on answers that are given. Finally, if one answer stands tall above the rest, the muppet asker of that question can choose that answer.
 
+Beautiful. Simple. Sexy. 
+
+Groverflow.com
+-------------------------------------------------
 ##MVP
 
 [X] Visitor can log in
