@@ -13,7 +13,7 @@ describe 'log out' do
     it{should have_link("Logout")}
 
     it "should redirect home after logging out" do
-      clink_link("Logout")
+      click_link("Logout")
       expect(current_path).to eq root_path
     end
   end
