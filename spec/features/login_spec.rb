@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'log in page' do
   let(:user) { FactoryGirl.create(:user) }
 
+
   scenario 'user visits the login page' do 
     visit login_path
     expect(page).to have_selector("form.login")
@@ -13,5 +14,6 @@ feature 'log in page' do
     fill_in :user_email, with: user.email
     fill_in :user_password, with: user.password
     click_button 'Log In'
+    current_path.should eq root_path
   end
 end
