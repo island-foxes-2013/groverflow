@@ -8,7 +8,7 @@ class EmailValidator < ActiveModel::EachValidator
 
   # Use the mailgun api to verify the client submitted email is correct. Documentation can be found here: http://documentation.mailgun.com/api-email-validation.html
   def valid?(email)
-    email = "address=" + email
+    email = "address=" + email.to_s
     response = RestClient.get "https://api:pubkey-2-5pezoadgsxe0stc4bidm2cq417n-p5"\
     "@api.mailgun.net/v2/address/validate?#{email}"
     mailgun_response = JSON.parse(response) # mailgun returns a string, convert to json

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(params[:user])
-    if @user.errors
+    unless @user.errors.empty?
       @user.errors.full_messages.each {|msg| p msg}
       @errors = @user.errors.full_messages
       @user = User.new(params[:user])
