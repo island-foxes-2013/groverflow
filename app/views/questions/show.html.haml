@@ -1,5 +1,4 @@
 
-
 %h1.question_title
   =@question.title
 %h4.question_author
@@ -7,4 +6,4 @@
 %p.question_content
   =@question.content
 
-= render partial: "answers/form", locals: { question: @question }
+= render partial: "answers/form", locals: { question: @question, answer: @answer }
