@@ -6,6 +6,8 @@ Show of hands.
 
 Exactly. This is a love connection for your favorite street. The sunniest street where the air is sweet. Of course, I am talking about Sesame Street (not the chinatown one). 
 
+##MVP
+
 [X] Visitor can log in
 
 [X] Visitor can sign up
@@ -23,6 +25,7 @@ Exactly. This is a love connection for your favorite street. The sunniest street
 [ ] Asker can choose the best answer
 
 ---------------------------------------------
+##Final Product
 
 [ ] Asker can update her questions
 
@@ -67,6 +70,7 @@ Exactly. This is a love connection for your favorite street. The sunniest street
 [ ] Authenticated user can downvote an answer
 
 --------------------
+##Stretch
 
 [ ] Visitor can view posts by tag
 
