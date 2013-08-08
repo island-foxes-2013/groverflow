@@ -1,6 +1,8 @@
 Groverflow::Application.routes.draw do
 
   root :to => 'home#index'
+  resources :sessions, only: [:new, :create, :destroy]
+  match 'login' => 'sessions#new', :as => "login"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
