@@ -23,8 +23,14 @@ end
 feature 'when viewing all questions' do
 
   let!(:question) { create(:question) }
+  before(:all) do
+    log_in
+    50.times do
+      FactoryGirl.create(:question)
+    end
+  end
 
-  before(:all) { log_in }
+  let!(:question) { FactoryGirl.create(:question) }
 
   before(:each) { visit questions_path }
 
@@ -33,12 +39,34 @@ feature 'when viewing all questions' do
   end
 
   scenario 'user sees a list of question titles, and they are links' do 
-    p question
     expect(page).to have_link question.title
   end
 
   scenario 'user can click on a link and it takes to the question detail page, specifically' do
-    pending
+    click_link(question.title)
+    current_path.should eq "/questions/#{question.id}"
+  end
+
+end
+
+feature "when viewing one question's details" do
+
+  before(:all) do 
+    log_in
+  end
+
+  let!(:question) { FactoryGirl.create(:question) }
+  let!(:user)     { FactoryGirl.create(:user) }
+
+  scenario 'user wants to view the questions title, poster, and content' do
+    question.user = user
+    question.save
+    p question.user_id
+    p user.id
+    visit question_path(question)
+    expect(page).to have_content question.title
+    expect(page).to have_content user.username
+    expect(page).to have_content question.content
   end
 
 end
