@@ -1,4 +1,7 @@
 .container
+  - if @errors
+    - @errors.each do |error|
+      %p= error
   .col-lg-12
     = form_for @user do |f|
       = f.label :email
