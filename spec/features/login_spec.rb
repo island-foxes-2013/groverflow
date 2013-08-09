@@ -13,3 +13,5 @@ feature 'log in page' do
     current_path.should eq root_path
   end
 end
+
+
