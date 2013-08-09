@@ -5,3 +5,5 @@
   =@question.user.username
 %p.question_content
   =@question.content
+
+= render partial: "answers/form", locals: { question: @question }
