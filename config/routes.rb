@@ -3,6 +3,6 @@ Groverflow::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :questions, only: [:index, :new, :show, :create, :destroy]
   match 'login' => 'sessions#new', :as => "login"
-  root :to => 'questions#show'
+  root :to => 'questions#index'
 
 end

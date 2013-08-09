@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'when creating a question' do
-  let(:question) { build(:question) }
+  let(:question) { create(:question) }
 
   # PLACEHOLDER: sign in
   before(:all) { log_in }
