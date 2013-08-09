@@ -172,6 +172,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   launchy
+  nokogiri
   pg
   rails (= 3.2.13)
   rest-client

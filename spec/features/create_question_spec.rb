@@ -22,12 +22,13 @@ feature 'on submit' do
     visit new_question_path
   end
   
-  scenario "when valid" do 
-    fill_in :question_title, with: question.title
-    fill_in :question_content, with: question.content
-    click_button 'Ask that shit'
-    expect(page).to have_content "question title"
-  end
+  scenario "routes to the question show page" 
+    # expect{
+    #   fill_in :question_title, with: question.title
+    #   fill_in :question_content, with: question.content
+    #   click_button 'Ask that shit'
+    #   }.to change(current_path).to(question_path)
+    
     
   scenario "when content invalid" do
     fill_in :question_title, with: question.title

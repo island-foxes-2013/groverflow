@@ -2,11 +2,7 @@ require 'faker'
 
 FactoryGirl.define do
   
-  factory :question do
-    title "test title"
-    content "lorem ipsum"
-    user_id 1
-  end
+
 
   factory :user do
     username "grover"
@@ -14,6 +10,12 @@ FactoryGirl.define do
     password "password"
   end
 
+  factory :question do
+    title "test title"
+    content "lorem ipsum"
+    user
+  end
+  
   factory :answer do
     content "Work the shaft"
     user_id 1

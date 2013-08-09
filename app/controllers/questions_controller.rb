@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.create(params[:question])
+    @question = current_user.questions.create(params[:question])
     unless @question.errors.empty?
       @question.errors.full_messages.each {|msg| p msg}
       @errors = @question.errors.full_messages
