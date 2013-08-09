@@ -9,8 +9,6 @@ gem 'pg'
 gem 'thin'
 gem 'haml-rails'
 
-gem 'haml-rails'
-
 gem 'rest-client'
 
 # Gems used only for assets and not required
@@ -26,8 +24,12 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'annotate'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'spork'
+  gem 'guard'
+  gem 'guard-rspec'
   # gem 'capybara-webkit', '~> 1.0.0'
   # gem 'selenium-webdriver'
   gem 'factory_girl_rails'
