@@ -12,6 +12,7 @@ class UsersController < ApplicationController
       @user = User.new(params[:user])
       render new_user_path
     else
+      self.current_user = @user
       redirect_to root_path
     end
   end

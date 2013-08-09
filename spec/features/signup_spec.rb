@@ -36,7 +36,7 @@ describe "user sign up" do
     context "if an invalid email is submitted" do
       
       before do
-        fill_in 'Email', with: "bademail"
+        fill_in 'Email', with: "bad_email"
         fill_in 'Username', with: username
         fill_in 'Password', with: password
         click_button 'Create User'
@@ -48,7 +48,7 @@ describe "user sign up" do
 
       it "has user fields filled in with previously submitted data"
   
-    end
+      end
 
     context "if proper signup information provided" do
       before do 

@@ -33,12 +33,12 @@ feature 'when viewing all questions' do
   end
 
   scenario 'user sees a list of question titles, and they are links' do 
-    p question
     expect(page).to have_link question.title
   end
 
-  scenario 'user can click on a link and it takes to the question detail page, specifically' do
-    pending
+  scenario 'clicked links will direct to specific question page' do
+    click_link question.title
+    expect(page).to have_content "question title"
   end
 
 end
