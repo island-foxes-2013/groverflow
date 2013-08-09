@@ -34,6 +34,7 @@ group :development, :test do
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
+  gem 'launchy'
 end
 
 gem 'jquery-rails'
