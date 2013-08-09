@@ -1,5 +1,5 @@
 FactoryGirl.define do
-gitr 
+
   factory :user do
     username "grover"
     email "jesseclay@gmail.com"
