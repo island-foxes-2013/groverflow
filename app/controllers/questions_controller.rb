@@ -22,6 +22,6 @@ class QuestionsController < ApplicationController
   
   def show
     @question = Question.find(params[:id])
-    @question.answers.build
+    @question.answers.build # we need to build this in the test
   end
 end
