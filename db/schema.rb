@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(:version => 20130809184720) do
 
   create_table "votes", :force => true do |t|
     t.integer "user_id"
-    t.integer "question_id"
-    t.integer "answer_id"
+    t.integer "votable_id"
+    t.string  "votable_type"
     t.integer "value"
   end
 
