@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  
+
   def index
     @questions = Question.all
   end  
@@ -18,5 +18,10 @@ class QuestionsController < ApplicationController
     else
       redirect_to question_path(@question)
     end
+  end
+  
+  def show
+    @question = Question.find(params[:id])
+    @question.answers.build
   end
 end
