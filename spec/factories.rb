@@ -14,21 +14,31 @@ FactoryGirl.define do
     password "password"
   end
 
+  factory :random_user, class: User do
+    username { Faker::Name.first_name }
+    email { "mitchel.seaman.junk@gmail.com" }
+    password "password"
+  end
+
   factory :answer do
     content "Work the shaft"
     user_id 1
     question_id 1
   end
 
-  factory :vote do
-    # mitch, we were doing too much. just don't say anything and factory girl figures it out
-    user
-    votable
-    votable_type "Question"
+  factory :question_vote, class: Vote do
+    association :user, factoiry: :random_user
+    votable { |v| v.association(:question) }
     value 0
   end
 
-  factory :invalid_answer, class: Answer do
+  factory :answer_vote, class: Vote do
+    association :user, factory: :random_user
+    votable { |v| v.association(:answer) }
+    value 0
   end
+
+  # factory :invalid_answer, class: Answer do
+  # end
 
 end

@@ -1,10 +1,16 @@
-  Groverflow::Application.routes.draw do
+Groverflow::Application.routes.draw do
+
+  root :to => 'questions#index'
+  match 'login' => 'sessions#new', :as => "login"
   resources :users, :only => [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
   resources :questions, only: [:index, :new, :create, :show, :destroy] do
-    resources :answers, only: [:create, :destroy]
+    resources :votes, only: [:create, :update, :destroy]
+    resources :answers, only: [:create, :destroy] 
   end
-  match 'login' => 'sessions#new', :as => "login"
-  root :to => 'questions#index'
+
+  resources :answers, only: [] do
+    resources :votes, only: [:create, :update, :destroy]
+  end
 
 end

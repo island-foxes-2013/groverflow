@@ -6,4 +6,30 @@
 %p.question_content
   =@question.content
 
+/ =button_to "Upvote", {controller:"vote", action:"create"}, {votable_id: @question.id, votable_type: "Question", vote_value: 1}
+
+/ =button_to "Upvote", question_votes_path(votable_id: @question.id, votable_type: "Question", vote_value: 1)
+=@question.votes.sum(:value)
+
+=form_tag question_votes_path(@question), method: "post" do
+  =hidden_field_tag(:votable_type, "Question")
+  =hidden_field_tag(:vote_value, 1)
+  =submit_tag("Upvote")
+=form_tag question_votes_path(@question), method: "post" do
+  =hidden_field_tag(:votable_type, "Question")
+  =hidden_field_tag(:vote_value, -1)
+  =submit_tag("Downvote")
+
 = render partial: "answers/form", locals: { question: @question, answer: @answer }
+
+- Answer.where(question_id: @question.id).each do |answer|
+  %p
+    / =form_tag question_votes_path(@answer), method: "post" do
+    /   =hidden_field_tag(:votable_type, "Answer")
+    /   =hidden_field_tag(:vote_value, 1)
+    /   =submit_tag("Upvote")
+    = answer.content
+    %h6= User.find(answer.user_id).username
+
+
+
