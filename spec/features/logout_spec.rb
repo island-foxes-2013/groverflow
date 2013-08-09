@@ -10,10 +10,10 @@ describe 'log out' do
     end  
     subject{page}
 
-    it{should have_link("Logout")}
+    it{should have_button("Logout")}
 
     it "should redirect home after logging out" do
-      click_link("Logout")
+      click_button("Logout")
       expect(current_path).to eq root_path
     end
   end

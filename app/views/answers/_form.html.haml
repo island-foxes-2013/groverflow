@@ -1,0 +1,10 @@
+/ .container
+/   - if @errors
+/     - @errors.each do |error|
+/       %p= error
+/   .col-lg-12
+%h3 Submit an answer!
+= form_for([question, answer]) do |f|
+  =f.text_field :content
+  =f.submit value: 'Answer that shit'
+

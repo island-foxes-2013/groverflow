@@ -1,4 +1,4 @@
 %h1 Questions for kids
 
--Question.all.each do |q|
-  =link_to q.title, question_path(q)
+-@questions.each do |question|
+  =link_to question.title, question_path(question)

@@ -24,7 +24,7 @@ Groverflow.com
 
 [X] Asker can ask question
 
-[ ] Responder can create an answer
+[X] Responder can create an answer
 
 [ ] Asker can choose the best answer
 
