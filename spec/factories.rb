@@ -25,7 +25,7 @@ FactoryGirl.define do
   end
 
   factory :question_vote, class: Vote do
-    association :user, factoiry: :random_user
+    association :user, factory: :random_user
     votable { |v| v.association(:question) }
     value 0
   end
