@@ -8,29 +8,25 @@ feature 'when creating a question' do
 
   before(:each) { visit new_question_path }
 
-  scenario 'user visits the create question page' do
-    expect(page).to have_content "Create a Post"
-  end
-
   scenario 'user fills in the create question form' do
     fill_in :question_title, with: question.title
     fill_in :question_content, with: question.content
-    click_button 'Ask that shit'
+    click_button 'Ask!'
   end
 
 end
 
 feature 'when viewing all questions' do
 
-  let!(:question) { create(:question) }
+  # let!(:question) { create(:question) }
   before(:all) do
     log_in
-    50.times do
-      FactoryGirl.create(:question)
+    10.times do
+      create(:question)
     end
   end
 
-  let!(:question) { FactoryGirl.create(:question) }
+  let!(:question) { create(:question) }
 
   before(:each) { visit questions_path }
 
@@ -39,6 +35,7 @@ feature 'when viewing all questions' do
   end
 
   scenario 'user sees a list of question titles, and they are links' do 
+    save_and_open_page
     expect(page).to have_link question.title
   end
 
@@ -61,8 +58,6 @@ feature "when viewing one question's details" do
   scenario 'user wants to view the questions title, poster, and content' do
     question.user = user
     question.save
-    p question.user_id
-    p user.id
     visit question_path(question)
     expect(page).to have_content question.title
     expect(page).to have_content user.username
