@@ -1,10 +1,8 @@
-%h1 Can you tell me how to get
-%h2 How to get to groverflow?
-
 =form_for @user, {url: sessions_path, html: { class: :login } } do |f|
-  =f.label :email, "Email"
-  =f.email_field :email
-  =f.label :password, "Password"
-  =f.password_field :password
-  =f.submit "Log In"
+  .form-title
+    %h1 Can you tell me how to get
+    %h2 How to get to groverflow?
+  %p=f.email_field :email, {class: "text", placeholder: "your email"}
+  %p=f.password_field :password, {class: "text", placeholder: "your password"}
+  %p=f.submit "Log In", {class: "submit"}
                                        
