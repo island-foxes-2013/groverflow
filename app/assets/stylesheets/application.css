@@ -11,3 +11,12 @@
  *= require_self
  *= require_tree .
  */
+
+
+/*
+I have imported these files here so that the 
+sassy variables defined in them are global across
+all files.
+*/
+@import 'form.css.scss';
+@import 'layout.css.scss';
