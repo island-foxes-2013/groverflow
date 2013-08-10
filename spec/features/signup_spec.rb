@@ -28,34 +28,37 @@ describe "user sign up" do
 
     subject { page }
 
-    it { should have_field("Username") }
-    it { should have_field("Password") }
-    it { should have_field("Email") }
-    it {should have_button('Create User')}
+    it { should have_field("user_username") }
+    it { should have_field("user_password") }
+    it { should have_field("user_email") }
+    it {should have_button('Signup')}
 
     context "if an invalid email is submitted" do
       
       before do
-        fill_in 'Email', with: "bad_email"
-        fill_in 'Username', with: username
-        fill_in 'Password', with: password
-        click_button 'Create User'
+        fill_in 'user_email', with: "bad_email"
+        fill_in 'user_username', with: username
+        fill_in 'user_password', with: password
+        click_button 'Signup'
       end
 
       it "goes to /users" do
         expect(current_path).to eq '/users'
       end
 
-      it "has user fields filled in with previously submitted data"
-  
+      it "has user fields filled in with previously submitted data" do
+        expect(find_field('user_email').value).to eq "bad_email"
+        expect(find_field('user_username').value).to eq username
       end
+
+    end
 
     context "if proper signup information provided" do
       before do 
-        fill_in 'Email', with: email
-        fill_in 'Username', with: username
-        fill_in 'Password', with: password
-        click_button 'Create User'
+        fill_in 'user_email', with: email
+        fill_in 'user_username', with: username
+        fill_in 'user_password', with: password
+        click_button 'Signup'
       end
 
       it "redirects to home page" do
@@ -65,9 +68,9 @@ describe "user sign up" do
 
     context "if email blank" do
       before do 
-        fill_in 'Username', with: username
-        fill_in 'Password', with: password
-        click_button 'Create User'
+        fill_in 'user_username', with: username
+        fill_in 'user_password', with: password
+        click_button 'Signup'
       end
 
       it "does not leave signup page" do
@@ -79,9 +82,9 @@ describe "user sign up" do
 
     context "if username blank" do
       before do 
-        fill_in 'Email', with: email
-        fill_in 'Password', with: password
-        click_button 'Create User'
+        fill_in 'user_email', with: email
+        fill_in 'user_password', with: password
+        click_button 'Signup'
       end
 
       it "does not leave signup page" do
@@ -93,9 +96,9 @@ describe "user sign up" do
 
     context "if password blank" do
       before do 
-        fill_in 'Email', with: email
-        fill_in 'Username', with: username
-        click_button 'Create User'
+        fill_in 'user_email', with: email
+        fill_in 'user_username', with: username
+        click_button 'Signup'
       end
 
       it "does not leave signup page" do
@@ -107,7 +110,3 @@ describe "user sign up" do
 
   end
 end
-
-
-
-
