@@ -3,12 +3,47 @@ require 'spec_helper'
 feature 'when creating an answer' do
   let(:question) { create(:question) }
   let(:answer) { create(:answer) }
+  before(:each) {log_in}
 
-  before(:all) { log_in }
+  context "from the question page" do
+    before(:each) { visit question_path(question) }
 
-  before(:each) { visit question_path(question) }
+    scenario "user sees an answer button" do    
+      expect(page).to have_button "Answer"
+    end
 
-  scenario "user visits the question's page" do    
-    expect(page).to have_content "Submit an answer"
+    context "when an answer is filled out" do
+      before(:each) {fill_in :answer_content, with: answer.content}
+
+      context "after clicking the submit button" do
+        before(:each) {click_button "Answer"}
+
+        scenario "user is redirected to question page" do
+          expect(current_path).to eq question_path(question)
+        end
+      end
+
+    end
+
+    context "when an answer is not filled out" do
+
+      context "after clicking the submit button" do
+        before(:each) {click_button "Answer"}
+
+        scenario "user is redirected to question page" do
+          expect(current_path).to eq question_path(question)
+        end
+
+        scenario "user receives feedback on error" do
+          save_and_open_page
+          expect(page).to have_content "Content can't be blank"
+        end
+
+      end
+
+    end
+
   end
+
+  
 end
