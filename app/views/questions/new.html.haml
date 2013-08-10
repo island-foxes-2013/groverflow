@@ -5,7 +5,7 @@
       =image_tag "grover_side.png", height: 100
     %p= f.text_field :title, {class: "text", placeholder: "your question"}
     %p= f.text_area :content, {class: "textarea", placeholder: "some helpful details"}
+    - if flash[:errors]
+      - flash[:errors].each do |error|
+        %p.error= error
     %p= f.submit 'Ask!', {class: "submit"}
-    - if @errors
-      - @errors.each do |error|
-        %p= error
