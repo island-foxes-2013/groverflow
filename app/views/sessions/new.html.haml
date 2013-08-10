@@ -4,5 +4,7 @@
     %h2 How to get to groverflow?
   %p=f.email_field :email, {class: "text", placeholder: "your email"}
   %p=f.password_field :password, {class: "text", placeholder: "your password"}
+  - if flash[:login_errors]
+    %p.error= flash[:login_errors]
   %p=f.submit "Log In", {class: "submit"}
                                        
