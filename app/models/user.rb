@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :email
   validates :email, email: true
   has_many :answers
+  has_many :votes
   has_many :questions
   has_secure_password
 

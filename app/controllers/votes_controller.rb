@@ -12,18 +12,19 @@ class VotesController < ApplicationController
   end
 
   def update
-    vote = Vote.where(user:         current_user,
-                      votable_id:   params[:votable_id],
-                      votable_type: params[:votable_type])
+    votable_id = params[:question_id] || params[:answer_id]
+    vote = current_user.votes.where(votable_id:   votable_id,
+                                    votable_type: params[:votable_type]).first
     
     vote.value = params[:vote_value]
     vote.save
   end
 
   def destroy
-    Vote.where(user:         current_user,
-               votable_id:   params[:votable_id],
-               votable_type: params[:votable_type]).destroy
+    votable_id = params[:question_id] || params[:answer_id]
+    vote = current_user.votes.where(votable_id:   votable_id,
+                                    votable_type: params[:votable_type]).first
+    vote.destroy if vote
   end
 
 end

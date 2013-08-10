@@ -13,11 +13,22 @@
 =form_tag question_votes_path(@question), method: "post" do
   =hidden_field_tag(:votable_type, "Question")
   =hidden_field_tag(:vote_value, 1)
-  =submit_tag("Upvote")
+  =submit_tag("Upvote (create)")
+=form_tag question_vote_path(@question), method: "put" do
+  =hidden_field_tag(:votable_type, "Question")
+  =hidden_field_tag(:vote_value, 1)
+  =submit_tag("Upvote (update)")
 =form_tag question_votes_path(@question), method: "post" do
   =hidden_field_tag(:votable_type, "Question")
   =hidden_field_tag(:vote_value, -1)
-  =submit_tag("Downvote")
+  =submit_tag("Downvote (create)")
+=form_tag question_vote_path(@question), method: "put" do
+  =hidden_field_tag(:votable_type, "Question")
+  =hidden_field_tag(:vote_value, -1)
+  =submit_tag("Downvote (update)")
+=form_tag question_vote_path(@question), method: "delete" do
+  =hidden_field_tag(:votable_type, "Question")
+  =submit_tag("Downvote (delete)")
 
 = render partial: "answers/form", locals: { question: @question, answer: @answer }
 
