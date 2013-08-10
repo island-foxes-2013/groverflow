@@ -2,26 +2,34 @@
 %html
   %head
     %title Groverflow
+    =stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css"
+    =javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"
     =stylesheet_link_tag    "application", :media => "all"
     =javascript_include_tag "application"
     =csrf_meta_tags
-    =stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css"
-    =javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"
   %body
-    %nav
-      %ul
-        -if logged_in?
-          %li
-            =button_to "Logout", session_path(current_user), {method: :delete}
-        -else
-          %li
-            =link_to "Signup", new_user_path
-            -flash.each do |key, value|
-              %div{class: "#{key}"} 
-                =value 
-          / or log in path!
     .container
-      %h1 Groverflow!
-
-      = image_tag "http://upload.wikimedia.org/wikipedia/en/thumb/b/be/Grover.JPG/220px-Grover.JPG"
+      .top_bar
+        =link_to image_tag("groverflow_logo_small.png", width: '200'), root_path
+        %nav
+          %ul
+            -if logged_in?
+              %li
+                =link_to "Ask for dating advice", new_question_path
+              %li
+                =link_to "Logout", session_path(current_user), {method: :delete}
+            -else
+              %li
+                =link_to "Signup", new_user_path
+                -flash.each do |key, value|
+                  %div{class: "#{key}"} 
+                    =value 
+              %li
+                =link_to "Sign In", new_session_path
+                -flash.each do |key, value|
+                  %div{class: "#{key}"} 
+                    =value 
+              / or log in path!
+    
+      
       =yield

@@ -5,6 +5,8 @@
   .col-lg-12
 %h1 Create a Post
 = form_for @question do |f|
-  = f.text_field :title
-  = f.text_area :content
-  = f.submit value: 'Ask that shit'
+  %p Question
+  %p= f.text_field :title
+  %p Details
+  %p= f.text_area :content
+  %p= f.submit value: 'Ask that shit'

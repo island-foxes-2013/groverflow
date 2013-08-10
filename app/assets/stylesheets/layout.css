@@ -1,0 +1,20 @@
+nav {
+  float:right;
+}
+nav li{
+  float:left;
+  margin-left: 1em;
+  list-style-type: none;
+}
+nav a{
+  padding: 1em;
+  background-color: #00a76d;
+  color: #ffffff;
+  border-radius: 1em;
+  text-decoration: none;
+}
+
+nav a:hover{
+  color: #ffffff;
+  text-decoration: none;
+}
