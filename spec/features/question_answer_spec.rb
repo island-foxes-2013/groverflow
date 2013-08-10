@@ -35,7 +35,6 @@ feature 'when creating an answer' do
         end
 
         scenario "user receives feedback on error" do
-          save_and_open_page
           expect(page).to have_content "Content can't be blank"
         end
 
