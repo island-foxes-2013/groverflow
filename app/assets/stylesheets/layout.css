@@ -1,16 +1,27 @@
+html{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.top_bar img{
+  margin: 1em 0;
+}
+
 nav {
   float:right;
 }
+
 nav li{
   float:left;
   margin-left: 1em;
   list-style-type: none;
 }
 nav a{
-  padding: 1em;
+  padding: 0.5em 1em;
+  display: block;
   background-color: #00a76d;
   color: #ffffff;
-  border-radius: 1em;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
   text-decoration: none;
 }
 

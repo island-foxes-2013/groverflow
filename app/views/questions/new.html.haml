@@ -1,12 +1,11 @@
-.container
-  - if @errors
-    - @errors.each do |error|
-      %p= error
-  .col-lg-12
-%h1 Create a Post
-= form_for @question do |f|
-  %p Question
-  %p= f.text_field :title
-  %p Details
-  %p= f.text_area :content
-  %p= f.submit value: 'Ask that shit'
+.form
+  = form_for @question do |f| 
+    .form-title
+      %h1 We're here to help!
+      =image_tag "grover_side.png", height: 100
+    %p= f.text_field :title, {class: "text", placeholder: "your question"}
+    %p= f.text_area :content, {class: "textarea", placeholder: "some helpful details"}
+    %p= f.submit 'Ask!', {class: "submit"}
+    - if @errors
+      - @errors.each do |error|
+        %p= error
