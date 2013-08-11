@@ -1,17 +1,13 @@
-.container
-  - if @errors
-    - @errors.each do |error|
-      %p= error
-  .col-lg-12
-    = form_for @user do |f|
-      = f.label :email
-      = f.email_field :email
-      %br
-      = f.label :username
-      = f.text_field :username
-      %br
-      = f.label :password
-      = f.password_field :password
-      %br
-      = f.submit
+= form_for @user do |f|
+  .form-title
+    %h1 Signup
+  %p= f.email_field :email, {class: "text", placeholder: "amazing email"}
+  %p= f.text_field :username, {class: "text", placeholder: "super username"}
+  %p= f.password_field :password, {class: "text", placeholder: "fantastic password"}
+  - if flash[:error]
+    - flash[:error].each do |error|
+      %p.error= error
+  %br
+  = f.submit "Signup", {class: "submit"}
+  
 

@@ -1,0 +1,43 @@
+$main-text-color: #ffffff;
+@mixin rounded-bottom-corners($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  -moz-border-radius-bottomright: $radius;
+  -moz-border-radius-bottomleft: $radius;
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+
+html{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.top_bar img{
+  margin: 1em 0;
+}
+
+nav {
+  float: right;
+
+  li {
+    float:left;
+    margin-left: 1em;
+    list-style-type: none;
+  }
+
+  a {
+  padding: 0.5em 1em;
+  display: block;
+  background-color: #00a76d;
+  color: $main-text-color;
+  text-decoration: none;
+  @include rounded-bottom-corners(.5em);
+
+    &:hover {
+      color: $main-text-color;
+      text-decoration: none;
+    }
+  }
+}
+

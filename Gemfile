@@ -37,7 +37,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'simplecov'
+  gem 'simplecov', require: false
 end
 
 gem 'jquery-rails'

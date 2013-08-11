@@ -3,8 +3,8 @@ require 'spec_helper'
 describe SessionsController do
   render_views
 
-  let(:session) {session[:id] = FactoryGirl.create(:user) }
-  let(:user) { FactoryGirl.create(:user) }
+  let(:session) {session[:id] = create(:user) }
+  let(:user) { create(:user) }
 
   describe '#new' do
 
@@ -24,17 +24,13 @@ describe SessionsController do
       end
 
       it 'should be treated as current_user with a session id' do 
-       expect {logged_in? == true} 
-     end
+        expect {logged_in? == true} 
+      end
 
 
-     it 'redirects user to root path' do
-      response.should redirect_to(root_path)
-    end
-
-    it "should have flash notice 'You. Made it.'" do
-      flash[:notice].should eq 'You. Made it.'
-    end
+      it 'redirects user to root path' do
+        response.should redirect_to(root_path)
+      end
 
       # for integration test  - if user is a current user with a session id -
       # it should be able to
@@ -94,12 +90,12 @@ describe SessionsController do
       end
 
       it "displays a flash alert, 'Invalid username or password'" do
-        flash[:alert].should eq 'Invalid username or password'
+        flash[:error].should eq 'Invalid email/password combo'
       end
 
       it "should re-render the sessions#new page" do
-        expect (response.status).to eq 200
-        response.should redirect_to(login_path)
+        expect(response.status).to eq 200
+        response.should have_rendered(:new)
       end
 
     end

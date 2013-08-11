@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
@@ -43,11 +45,11 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
   end
 
-  config.before(:each) do
+  config.before(:all) do
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
+  config.after(:all) do
     DatabaseCleaner.clean
   end
 

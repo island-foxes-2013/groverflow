@@ -2,19 +2,25 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
-    # render :new
   end
 
   def create
     @user = User.find_by_email(params[:user][:email])
-    user = @user.authenticate(params[:user][:password])
-    if user
-      self.current_user = user
-      redirect_to root_path, notice: "You. Made it."
+    if @user
+      @authenticated_user = @user.authenticate(params[:user][:password])
+      if @authenticated_user
+        self.current_user = @authenticated_user
+        redirect_to root_path
+      else
+        flash.now[:error] = "Invalid email/password combo"
+        render :new
+      end
     else
-      flash.now.alert = "Invalid username or password"
+      @user = User.new(params[:user])
+      flash.now[:error] = "Can't find that email!"
       render :new
     end
+    
   end
 
   def destroy

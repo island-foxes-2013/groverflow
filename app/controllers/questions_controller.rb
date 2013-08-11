@@ -4,17 +4,20 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end  
 
-  def new 
-    @question = Question.new
+  def new
+    if logged_in?
+      @question = Question.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
     @question = current_user.questions.create(params[:question])
-    unless @question.errors.empty?
-      @question.errors.full_messages.each {|msg| p msg}
-      @errors = @question.errors.full_messages
+    if @question.errors.any?
+      flash.now[:errors] = @question.errors.full_messages
       @question = Question.new(params[:question])
-      render 'new'
+      render :new
     else
       redirect_to question_path(@question)
     end

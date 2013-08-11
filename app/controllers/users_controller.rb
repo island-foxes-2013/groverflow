@@ -5,11 +5,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(params[:user])
-    unless @user.errors.empty?
-      @user.errors.full_messages.each {|msg| p msg}
-      @errors = @user.errors.full_messages
-      @user = User.new(params[:user])
+    @user = User.new(params[:user])
+    @user.save
+    if @user.errors.any?
+      flash.now[:error] = @user.errors.full_messages
       render new_user_path
     else
       self.current_user = @user

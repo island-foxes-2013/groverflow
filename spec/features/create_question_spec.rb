@@ -1,44 +1,73 @@
 require 'spec_helper'
 
-feature 'lands on new question page' do
-  
-  let(:question) { build(:question) }
-
-  # PLACEHOLDER: sign in
-  before(:all) { log_in }
-
-  scenario 'user visits the create question page' do
-    visit new_question_path
-    expect(page).to have_content "Create a Post"
-  end
-end
-
-feature 'on submit' do  
-  
+feature 'Question Creation' do
   let(:question) { build(:question) }
   
-  before(:each) do
-    log_in
-    visit new_question_path
-  end
-  
-  scenario "routes to the question show page" 
-    # expect{
-    #   fill_in :question_title, with: question.title
-    #   fill_in :question_content, with: question.content
-    #   click_button 'Ask that shit'
-    #   }.to change(current_path).to(question_path)
-    
-    
-  scenario "when content invalid" do
-    fill_in :question_title, with: question.title
-    click_button 'Ask that shit'
-    expect(page).to have_content "Content can't be blank"
+
+  context "when not logged in" do
+
+    scenario "user should be redirected to root" do
+      expect{visit new_question_path}.to change{current_path}.to(root_path)
+    end
+
   end
 
-  scenario "when title invalid" do
-    fill_in :question_content, with: question.content
-    click_button 'Ask that shit'
-    expect(page).to have_content "Title can't be blank"
+
+  context "when logged in" do
+    before(:each) {log_in}
+
+    context "has a landing page with a form" do
+      before(:each){visit new_question_path}
+      subject{page}
+
+      it{should have_field "question_title"}
+      it{should have_field "question_content"}
+      it{should have_button "Ask!"}
+      
+      context "which, when filled validly" do
+
+        it "should route to question's show page" do
+          expect {
+            fill_in :question_title, with: question.title
+            fill_in :question_content, with: question.content
+            click_button 'Ask!'
+          }.to change{current_path}.to(/\/questions\/*/)
+        end
+
+      end
+
+      context "which, when filled invalidly" do
+
+        context "because of no title" do
+          before(:each) do
+            fill_in :question_content, with: question.content
+            click_button 'Ask!'
+          end
+
+          it{should have_text "Title can't be blank"}
+
+          it "should not redirect" do
+            expect(current_path).not_to eq(/\/questions\/*/)
+          end
+
+        end
+
+        context "because of no content" do
+          before(:each) do
+            fill_in :question_title, with: question.title
+            click_button 'Ask!'
+          end
+
+          it{should have_text "Content can't be blank"}
+
+          it "should not redirect" do
+            expect(current_path).not_to eq(/\/questions\/*/)
+          end
+        end
+      end
+
+    end
+
   end
+
 end
