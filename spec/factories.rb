@@ -1,14 +1,14 @@
 FactoryGirl.define do
 
   factory :user do
-    username "grover"
+    username {Faker::Internet.user_name}
     email "jesseclay@gmail.com"
-    password "password"
+    password {Faker::Internet.password}
   end
 
   factory :question do
-    title "test title"
-    content "lorem ipsum"
+    title {Faker::Lorem.sentence}
+    content {Faker::Lorem.paragraph}
     user
   end
   
