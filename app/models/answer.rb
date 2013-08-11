@@ -14,8 +14,9 @@
 class Answer < ActiveRecord::Base
   attr_accessible :content, :user, :best_answer
 
-  validates :content, :user_id, :question_id , presence: true
+  validates :content, :user, :question, presence: true
   validates :question, associated: true
+  validates :user, associated: true
   belongs_to :user
   belongs_to :question
   has_many :votes, as: :votable

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-feature 'when creating an answer' do
+feature 'Answer creation' do
   let(:question) { create(:question) }
-  let(:answer) { create(:answer) }
+  let(:answer) { build(:answer) }
   before(:each) {log_in}
 
   context "from the question page" do

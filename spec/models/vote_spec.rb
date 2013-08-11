@@ -13,52 +13,28 @@ require 'spec_helper'
 
 describe Vote do
 
-  let(:question_upvote) { create(:question_vote, value: 1) }
-  let(:question_downvote) { create(:question_vote, value: -1) }
+  let(:question_vote) { create(:question_vote) }
 
-  let(:answer_upvote) { create(:answer_vote, value: 1) }
-  let(:answer_downvote) { create(:answer_vote, value: -1) }
+  let(:answer_vote) { create(:answer_vote) }
 
-  it { should validate_presence_of(:user_id) }
+  it { should validate_presence_of(:user) }
   it { should validate_presence_of(:votable_id) }
   it { should validate_presence_of(:votable_type) }
   it { should validate_presence_of(:value) }
+  it { should belong_to :user }
+  it { should belong_to :votable }
 
   describe "#new" do
 
-    context "valid question upvote" do
-      subject { question_upvote }
+    context "valid question vote" do
+      subject { question_vote }
       it { should be_a Vote }
-      its(:user) { should be_a User }
-      its(:votable) { should be_a Question }
-      its(:value) { should be 1 }
-    end
-
-    context "valid question downvote" do
-      subject { question_downvote }
-      it { should be_a Vote }
-      its(:user) { should be_a User }
-      its(:votable) { should be_a Question }
-      its(:value) { should be -1 }
     end
 
     context "valid answer upvote" do
-      subject { answer_upvote }
+      subject { answer_vote }
       it { should be_a Vote }
-      its(:user) { should be_a User }
-      its(:votable) { should be_a Answer }
-      its(:value) { should be 1 }
     end
-
-    context "valid answer upvote" do
-      subject { answer_downvote }
-      it { should be_a Vote }
-      its(:user) { should be_a User }
-      its(:votable) { should be_a Answer }
-      its(:value) { should be -1 }
-    end
-
-    context
 
   end
   

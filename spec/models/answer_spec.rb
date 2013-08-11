@@ -15,11 +15,13 @@ require 'spec_helper'
 
 describe Answer do
   it { should validate_presence_of :content }
-  it { should validate_presence_of :best_answer }
-  it { should validate_presence_of :user_id }
-  it { should validate_presence_of :question_id }
-  # it { pending; should validate_associated :user }
-  # it { pending; should validate_associated :question }
+  # The following doesn't work because default: false sets it to nil
+  # it { should validate_presence_of :best_answer }
+  it { should validate_presence_of :user }
+  it { should validate_presence_of :question }
+  it { should belong_to :user }
+  it { should belong_to :question }
+  it { should have_many(:votes) }
 
   describe "#new" do
 
