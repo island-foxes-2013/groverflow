@@ -9,26 +9,37 @@
 
 / =button_to "Upvote", question_votes_path(votable_id: @question.id, votable_type: "Question", vote_value: 1)
 =@question.votes.sum(:value)
+#question_votes
+  =link_to "Upvote create", question_votes_path(@question, vote_value: 1), remote:true, method: "post", class: "empty-state u-create"
+  =link_to "Upvote update", question_vote_path(@question, vote_value: 1), remote:true, method: "put", class: "downvote-state u-update"
+  =link_to "Upvote delete", question_vote_path(@question), remote:true, method: "delete", class: "upvote-state u-delete"
 
-=form_tag question_votes_path(@question), method: "post" do
-  =hidden_field_tag(:votable_type, "Question")
-  =hidden_field_tag(:vote_value, 1)
-  =submit_tag("Upvote (create)")
-=form_tag question_vote_path(@question), method: "put" do
-  =hidden_field_tag(:votable_type, "Question")
-  =hidden_field_tag(:vote_value, 1)
-  =submit_tag("Upvote (update)")
-=form_tag question_votes_path(@question), method: "post" do
-  =hidden_field_tag(:votable_type, "Question")
-  =hidden_field_tag(:vote_value, -1)
-  =submit_tag("Downvote (create)")
-=form_tag question_vote_path(@question), method: "put" do
-  =hidden_field_tag(:votable_type, "Question")
-  =hidden_field_tag(:vote_value, -1)
-  =submit_tag("Downvote (update)")
-=form_tag question_vote_path(@question), method: "delete" do
-  =hidden_field_tag(:votable_type, "Question")
-  =submit_tag("Downvote (delete)")
+  =link_to "Downvote create", question_votes_path(@question, vote_value: -1), remote:true, method: "post", class: "empty-state d-create"
+  =link_to "Downvote update", question_vote_path(@question, vote_value: -1), remote:true, method: "put", class: "upvote-state d-update"
+  =link_to "Downvote delete", question_vote_path(@question), remote:true, method: "delete", class: "downvote-state d-delete"
+
+
+  / =form_tag question_vote_path(@question), method: "put", remote:true, class: "downvote-state u-update" do
+  /   =hidden_field_tag(:votable_type, "Question")
+  /   =hidden_field_tag(:vote_value, 1)
+  /   =submit_tag("Upvote (update)")
+  / =form_tag question_vote_path(@question), method: "delete", remote:true, class: "upvote-state u-delete" do
+  /   =hidden_field_tag(:votable_type, "Question")
+  /   =submit_tag("Upvote (delete)")
+
+  / =form_tag question_votes_path(@question), method: "post", remote:true, class: "empty-state d-create" do
+  /   =hidden_field_tag(:votable_type, "Question")
+  /   =hidden_field_tag(:vote_value, -1)
+  /   =submit_tag("Downvote (create)")
+  / =form_tag question_vote_path(@question), method: "put", remote:true, class: "upvote-state d-update" do
+  /   =hidden_field_tag(:votable_type, "Question")
+  /   =hidden_field_tag(:vote_value, -1)
+  /   =submit_tag("Downvote (update)")
+  / =form_tag question_vote_path(@question), method: "delete", remote:true, class: "downvote-state" do
+  /   =hidden_field_tag(:votable_type, "Question")
+  /   =submit_tag("Downvote (delete)")
+
+
 
 = render partial: "answers/form", locals: { question: @question, answer: @answer }
 
