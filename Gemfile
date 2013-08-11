@@ -25,6 +25,7 @@ end
 
 group :development, :test do
   gem 'annotate'
+  gem 'awesome_print'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'spork'
