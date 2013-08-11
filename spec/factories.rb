@@ -37,4 +37,16 @@ FactoryGirl.define do
     value 0
   end
 
+  factory :question_comment, class: Comment do
+    association :user, factory: :random_user
+    commentable { |c| c.association(:question)}
+    content { Faker::Lorem.paragraph }
+  end
+
+  factory :answer_comment, class: Comment do
+    association :user, factory: :random_user
+    commentable { |c| c.association(:answer) }
+    content { Faker::Lorem.paragraph }
+  end
+
 end

@@ -1,0 +1,7 @@
+= form_for([answer, comment]) do |f|
+  =f.text_field :content
+  =f.submit value: 'Answer that shit'
+-if flash[:answer_errors]
+  %ul
+    - flash[:answer_errors].each do |error|
+      %li=error
