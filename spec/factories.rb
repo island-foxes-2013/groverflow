@@ -20,8 +20,9 @@ FactoryGirl.define do
 
   factory :answer do
     content "Work the shaft"
-    user_id 1
-    question_id 1
+    user
+    question
+    best_answer false
   end
 
   factory :question_vote, class: Vote do
@@ -35,8 +36,5 @@ FactoryGirl.define do
     votable { |v| v.association(:answer) }
     value 0
   end
-
-  # factory :invalid_answer, class: Answer do
-  # end
 
 end
