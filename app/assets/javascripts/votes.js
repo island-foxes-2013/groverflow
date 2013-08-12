@@ -8,34 +8,49 @@ var Votes = {
 		$('.d-delete').on('ajax:success', this.emptyView);
 	},
 
-	upvoteView: function() {
+	upvoteView: function(event, response, status, xhr) {
+		console.log(response.vote_count);
 		console.log("in upvoteView");
 		var parent = $(this).parent()
 		parent.children().hide();
-		parent.children('.upvote-state').show();
+		parent.find('.upvote-state').show();
+		parent.find(".vote_count").text(response.vote_count).show();
 	},
 
-	emptyView: function() {
+	emptyView: function(event, response, status, xhr) {
+		console.log(response.vote_count);
 		console.log("in deleteView");
 		var parent = $(this).parent()
 		parent.children().hide();
-		parent.children('.empty-state').show();
+		parent.find('.empty-state').show();
+		parent.find(".vote_count").text(response.vote_count).show();
 	},
 
-	downvoteView: function() {
+	downvoteView: function(event, response, status, xhr) {
+		console.log(response.vote_count);
 		console.log("in downvoteView");
 		var parent = $(this).parent()
 		parent.children().hide();
-		parent.children('.downvote-state').show();
+		parent.find('.downvote-state').show();
+		parent.find(".vote_count").text(response.vote_count).show();
 	},
 
 	newView: function() {
+		$('.answer_votes').children().hide();
 		$('#question_votes').children().hide();
-		$('#question_votes').children('.empty-state').show();
+		$('#question_votes').find(".vote_count").show();
+		$('.answer_votes').find(".vote_count").show();
+		// $('#question_votes').find('.empty-state').show();
+		$('.downvoted').find(".downvote-state").show();
+		$('.upvoted').find(".upvote-state").show();
+		$('.notvoted').find(".empty-state").show();
+
+
 	}
-	
 
 };
+
+
 
 $(document).ready(function(){
 	Votes.init();
