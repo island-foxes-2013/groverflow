@@ -1,0 +1,18 @@
+.question_title {
+  color: #00a76d;
+  text-shadow: 2px 2px 2px darken(#00a76d, 20);
+  transition: text-shadow 2s;
+  transition: color 2s;
+
+  &:hover {
+    color: black;
+    text-shadow: 2px 2px 10px darken(red, 20);
+  }
+}
+
+#question_votes {
+  float: left;
+  width: 20%;
+}
+
+
