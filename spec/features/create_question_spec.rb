@@ -6,8 +6,8 @@ feature 'Question Creation' do
 
   context "when not logged in" do
 
-    scenario "user should be redirected to root" do
-      expect{visit new_question_path}.to change{current_path}.to(root_path)
+    scenario "user should be redirected to login" do
+      expect{visit new_question_path}.to change{current_path}.to(login_path)
     end
 
   end
