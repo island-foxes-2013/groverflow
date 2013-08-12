@@ -40,17 +40,34 @@
   /   =submit_tag("Downvote (delete)")
 
 
+= render partial: "comments/question_form", locals: { question: @question, question_comment: @question_comment }
+.question_comments
+  - @question.comments.each do |comment| 
+    %p 
+      = comment.user_id
+      = comment.content
+      = User.find(comment.user_id).username
 
+
+  
 = render partial: "answers/form", locals: { question: @question, answer: @answer }
 
 - Answer.where(question_id: @question.id).each do |answer|
   %p
+    = answer.content
+    / DONT ERASE THIS
+    / %h6= User.find(answer.user_id).username
+    / = render partial: "comments/form", locals: { answer: @answer, comment: @answer_comment }
+    / .comments
+    /   - answer.comments.each do |comment|
+    /     %p
+    /       =comment.content
+    /       =User.find(comment.user_id).username
+
     / =form_tag question_votes_path(@answer), method: "post" do
     /   =hidden_field_tag(:votable_type, "Answer")
     /   =hidden_field_tag(:vote_value, 1)
     /   =submit_tag("Upvote")
-    = answer.content
-    %h6= User.find(answer.user_id).username
 
 
 
