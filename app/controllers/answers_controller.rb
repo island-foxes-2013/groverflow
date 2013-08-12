@@ -11,4 +11,15 @@ class AnswersController < ApplicationController
     redirect_to question_path(question)
   end
 
+  def answer_comments
+    ap params
+    params[:ids].each do |id|
+      answer_obj = Answer.find(id)
+      
+      respond_to do |format|
+        format.js { render partial: 'answers/answer_from', locals: { answer: answer_obj, answer_comment: Comment.new } }
+      end
+    end
+  end
+
 end

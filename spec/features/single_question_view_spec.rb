@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 feature "Single Question Thread View" do
+
   before(:all) do 
     log_in
     @question = create(:question)
+    p @question
   end
 
   before(:each) do 
@@ -23,7 +25,9 @@ feature "Single Question Thread View" do
     expect(page).to have_content @question.content
   end
 
-  scenario 'has upvote link'
+  scenario 'has upvote link' do
+    find(".u-create").click
+  end
 
   scenario 'shows upvotes'
 

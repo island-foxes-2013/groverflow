@@ -31,6 +31,7 @@ class QuestionsController < ApplicationController
     else
       @question_vote = nil
     end
+    @question_comment = @question.comments.new
   end
 
 end
