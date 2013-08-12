@@ -1,0 +1,56 @@
+@mixin rounded-border-corners($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+.question-summary {
+  // background-color: rgba(100,200,100,.5);s
+  text-align: center;
+  display: inline-block;
+  border: 15px solid green;
+  @include rounded-border-corners(2em);
+
+  .stats {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 150%;
+    font-weight: lighter;
+    margin-top: 3%;
+    padding: 10px;
+
+    .vote {
+      display: inline-block;
+    }
+    
+    .answer {
+      display: inline-block;
+    }  
+  }
+
+  .summary {
+    background-color: rgba(100,0,150,.5);
+    display: inline-block;
+    padding: 10px;
+    text-align: right;
+    
+    .post-time {
+      display: inline-block;
+    }
+
+    .user-info {
+      background-color: rgba(0,0,150,.5);
+      display: inline-block;
+      text-align: right;
+      // padding: 10px;
+      .user-details {
+        display: inline-block;
+      }
+
+      .user-gravatar {
+        display: inline-block;
+        padding: 10px;
+      }
+    }
+  }
+}

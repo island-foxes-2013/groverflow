@@ -1,4 +1,26 @@
-%h1 Questions for kids
-
--@questions.each do |question|
-  %p=link_to question.title, question_path(question)
+.content
+  .mainbar
+    %h3 All Questions
+  .questions
+  -@questions.each do |question|
+    .question-summary
+      .stats
+        .vote
+          .vote-count-post
+            %strong= question.votes.sum(:value)
+          .viewcount
+            votes
+        .answer
+          .answer-count-post
+            %strong= question.answers.count
+          .viewcount
+            answers
+      .summary
+        %h3= link_to question.title, question_path(question)
+        .post-time
+          asked __ seconds ago
+        .user-info
+          .user-details
+            = question.user.username
+          .user-gravatar
+            %img{src: "www.blah.com"}          
