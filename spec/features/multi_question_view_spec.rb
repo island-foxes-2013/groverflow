@@ -12,7 +12,7 @@ feature 'Multi-Question thread view' do
   before(:each) { visit questions_path }
 
   scenario 'shows the user an appropriate title' do
-    expect(page).to have_content "Questions for kids"
+    expect(page).to have_content "All Questions"
   end
 
   scenario 'contains a list of titles, which are links' do 
