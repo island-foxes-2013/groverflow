@@ -8,6 +8,7 @@ gem 'nokogiri'
 gem 'pg'
 gem 'thin'
 gem 'haml-rails'
+gem 'sextant'
 
 gem 'rest-client'
 

@@ -6,15 +6,16 @@ Groverflow::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :questions, only: [:index, :new, :create, :show, :destroy] do
     resources :votes, only: [:create, :update, :destroy] 
-    resources :answers, only: [:create, :destroy] 
+    resources :answers, only: [:create, :destroy]
+    resources :comments, only: [:create, :update, :destroy]
+
   end
 
   resources :answers, only: [] do
     resources :votes, only: [:create, :update, :destroy]
-  end
-
-  resources :questions, only:[] do
     resources :comments, only: [:create, :update, :destroy]
   end
+
+  post '/answer_comments' => 'answers#answer_comments'
 
 end

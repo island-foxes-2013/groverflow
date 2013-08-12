@@ -11,9 +11,7 @@ class CommentsController < ApplicationController
     @comment = Comment.create(user:       current_user,
                               commentable: commentable,
                               content:     params[:comment][:content])
-    ap "HELLLLO"
-    ap @comment
-    ap commentable
+
     if @comment.errors.any? 
       flash[:comment_errrors] = @comment.errors.full_messages
     end

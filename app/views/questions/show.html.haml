@@ -46,18 +46,21 @@
     %p 
       = comment.user_id
       = comment.content
-      = User.find(comment.user_id).username
+      / = User.find(comment.user_id).username
 
 
   
 = render partial: "answers/form", locals: { question: @question, answer: @answer }
 
 - Answer.where(question_id: @question.id).each do |answer|
-  %p
+  .answer
+    .answer_id{:id => "\#{answer.id}"}
+      = answer.id
+    = render partial: "comments/answer_form", locals: { question: @question, answer_comment: answer.comments.new }
     = answer.content
-    / DONT ERASE THIS
     / %h6= User.find(answer.user_id).username
-    / = render partial: "comments/form", locals: { answer: @answer, comment: @answer_comment }
+
+    / = render partial: "comments/answer_form", locals: { answer: @answer, answer_comment: @answer_comment }
     / .comments
     /   - answer.comments.each do |comment|
     /     %p
