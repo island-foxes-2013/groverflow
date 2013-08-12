@@ -21,12 +21,15 @@ feature "Commenting" do
         fill_in "comment_content", with: @comment.content
         click_button "Comment"
       end
+      subject{page}
+
+      it should have_text @comment.content
+      it should have_text @comment.user.username
 
       it "should refresh the page" do
         expect(current_path).to eq question_path(@question)
       end
 
-      it "should show the comment"
     end
 
     context ""
