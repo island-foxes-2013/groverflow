@@ -29,7 +29,6 @@
   }
 
   .summary {
-    background-color: rgba(100,0,150,.5);
     display: inline-block;
     padding: 10px;
     text-align: right;
@@ -39,10 +38,9 @@
     }
 
     .user-info {
-      background-color: rgba(0,0,150,.5);
       display: inline-block;
       text-align: right;
-      // padding: 10px;
+
       .user-details {
         display: inline-block;
       }
