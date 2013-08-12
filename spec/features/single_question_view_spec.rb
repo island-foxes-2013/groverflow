@@ -2,10 +2,13 @@ require 'spec_helper'
 
 feature "Single Question Thread View" do
   before(:all) do 
+    log_in
     @question = create(:question)
   end
 
-  before(:each) {visit question_path(@question)}
+  before(:each) do 
+    visit question_path(@question)
+  end
 
   scenario 'shows question title' do
     expect(page).to have_content @question.title
@@ -16,6 +19,7 @@ feature "Single Question Thread View" do
   end
 
   scenario 'shows question content' do
+    save_and_open_page
     expect(page).to have_content @question.content
   end
 

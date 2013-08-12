@@ -9,12 +9,13 @@
 
 / =button_to "Upvote", question_votes_path(votable_id: @question.id, votable_type: "Question", vote_value: 1)
 
--vote = Vote.where("user_id = ? and votable_id = ? and votable_type = ?", current_user.id, @question.id, "Question")
--if vote.any?
-  -vote_class = 'downvoted' if vote.first.value == -1
-  -vote_class = 'upvoted' if vote.first.value == 1
+/ -vote = Vote.where("user_id = ? and votable_id = ? and votable_type = ?", current_user.id, @question.id, "Question")
+-if @question_vote
+  -vote_class = 'downvoted' if @question_vote.value == -1
+  -vote_class = 'upvoted' if @question_vote.value == 1
 -else
   -vote_class = 'notvoted'
+  
 #question_votes{:class => "#{vote_class}"}
   .vote_count=@question.votes.sum(:value)
   =link_to image_tag('upvote_unselected.png'), question_votes_path(@question, vote_value: 1), remote:true, method: "post", class: "empty-state u-create"

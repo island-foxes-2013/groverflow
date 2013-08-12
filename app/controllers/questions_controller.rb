@@ -26,6 +26,11 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answer = @question.answers.new
+    if logged_in?
+      @question_vote = @question.votes.find_by_user_id(current_user.id)
+    else
+      @question_vote = nil
+    end
   end
 
 end
