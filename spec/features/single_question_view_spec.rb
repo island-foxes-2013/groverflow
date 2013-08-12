@@ -5,35 +5,20 @@ feature "Single Question Thread View" do
   before(:all) do 
     log_in
     @question = create(:question)
-    p @question
   end
 
   before(:each) do 
     visit question_path(@question)
   end
 
-  scenario 'shows question title' do
-    expect(page).to have_content @question.title
-  end
+  subject{page}
 
-  scenario "shows question's author" do
-    expect(page).to have_content @question.user.username
-  end
-
-  scenario 'shows question content' do
-    save_and_open_page
-    expect(page).to have_content @question.content
-  end
-
-  scenario 'has upvote link' do
-    find(".u-create").click
-  end
-
-  scenario 'shows upvotes'
-
-  scenario 'has downvote link'
-
-  scenario 'shows downvotes'
+  it { should have_content @question.title }
+  it { should have_content @question.user.username }
+  it { should have_content @question.content }
+  it { should have_css ".u-create"}
+  it { should have_css "#question_votes .vote_count"}
+  it { should have_css ".d-create"}
 
   scenario 'shows comments'
 
