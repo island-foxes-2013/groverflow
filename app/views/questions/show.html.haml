@@ -26,8 +26,8 @@
   = render partial: "comments/question_form", locals: { question: @question, question_comment: @question_comment }
   .question_comments
     - @question.comments.each do |comment| 
-      %p 
-        = comment.user_id
+      .comment 
+        = User.find(1).username+": "
         = comment.content
         / = User.find(comment.user_id).username
 
