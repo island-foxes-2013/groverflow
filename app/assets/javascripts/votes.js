@@ -44,8 +44,6 @@ var Votes = {
 		$('.downvoted').find(".downvote-state").show();
 		$('.upvoted').find(".upvote-state").show();
 		$('.notvoted').find(".empty-state").show();
-
-
 	}
 
 };
