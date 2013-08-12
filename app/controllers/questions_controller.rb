@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
   skip_before_filter :require_login, only: [:index, :show]
 
   def index
+    # TODO-JW: consider pagination or something ...
     @questions = Question.all
   end  
 
@@ -17,8 +18,9 @@ class QuestionsController < ApplicationController
   def create
     @question = current_user.questions.create(params[:question])
     if @question.errors.any?
-      flash.now[:errors] = @question.errors.full_messages
-      @question = Question.new(params[:question])
+      debugger
+      flash.now[:errors] = "You had an error!"
+      #@question = Question.new(params[:question])
       render :new
     else
       redirect_to question_path(@question)
