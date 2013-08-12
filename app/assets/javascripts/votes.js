@@ -8,7 +8,28 @@ var Votes = {
 		$('.d-delete').on('ajax:success', this.emptyView);
 	},
 
+	// render: function(values) {
+	//  TODO-JW: THIS IS INCOMPLETE, but gets at the idea ...
+	// 	var $parent = $(this).parent();
+	// 	// iterate over the hash keys (which are selectors) and call show() if true, hide() if false
+	// },
+
+	// defaults: function() {
+	//  TODO-JW: THIS IS INCOMPLETE, but gets at the idea ...
+	// 	return {
+	// 		'.answer_votes': false,
+	// 		'.answer_votes': false,
+	// 		'.answer_votes': true,
+	// 		'.answer_votes': false,
+	// 		'.answer_votes': false
+	// 	}
+	// },
+
 	upvoteView: function(event, response, status, xhr) {
+		// TODO-JW: THIS IS INCOMPLETE, but gets at the idea ...
+		// var showHide = defaults();
+		// showHide['.empty-state'] = true;
+		// this.render(showHide);
 		console.log(response.vote_count);
 		console.log("in upvoteView");
 		var parent = $(this).parent()
@@ -54,48 +75,3 @@ $(document).ready(function(){
 	Votes.init();
 	Votes.newView();
 })
-
-
-
-
-
-
-
-
-
-
-
-// function Die() {
-//   this.value = 0;
-// }
-
-// function render_all(collection,dom_element) {
-//   dom_element.empty();
-//   $.each(collection,function(key,value) {
-//       value.add_to(dom_element);
-//   });
-// }
-
-// Die.prototype.render = render;
-// Die.prototype.roll = roll;
-// Die.prototype.add_to = add_to;
-
-// function add_to(element) {
-//   element.append(this.render());
-// }
-
-// function render() {
-//   die_value = this.value;
-//   return '<div class="die">' + die_value + '</div>'
-// }
-
-// function roll() {
-//   this.value = Math.floor((Math.random()*6)+1)
-// }
-
-// function render_all(collection,dom_element) {
-//   dom_element.empty();
-//   $.each(collection,function(key,value) {
-//       value.add_to(dom_element);
-//   });
-// }
