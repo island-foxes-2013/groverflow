@@ -15,6 +15,7 @@
   float: left;
   width: 19%;
   padding-left: 5%;
+  margin-top: 20px;
 }
 
 .question_header {
@@ -28,4 +29,34 @@
   background-color: green;
   display: block;
   padding-bottom: 2.3em;
+  padding-top: 1.5em;
+}
+
+.question_comments {
+  margin-top: 20px;
+  background-color: yellow;
+  padding: 2em;
+  float: right;
+  width: 30%;
+
+}
+
+.all_answers {
+  width: 65%;
+}
+
+.comment {
+  margin: 1em;
+  padding: 1em 2em;
+  background-color: pink;
+}
+
+.answer_form {
+  border: black solid 2px;
+}
+
+.header {
+  min-height: 300px;
+  margin-bottom: 20px;
+  background-color: black;
 }

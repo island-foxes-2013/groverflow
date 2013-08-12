@@ -1,39 +1,41 @@
 .some_dealie
-  .question_header
-    %h1.question_title
-      =@question.title
-    %h4.question_author
-      =@question.user.username
-    %p.question_content
-      =@question.content
+  .header
+    .question_header
+      %h1.question_title
+        =@question.title
+      %h4.question_author
+        =@question.user.username
+      %p.question_content
+        =@question.content
 
 
-  -if @question_vote
-    -vote_class = 'downvoted' if @question_vote.value == -1
-    -vote_class = 'upvoted' if @question_vote.value == 1
-  -else
-    -vote_class = 'notvoted'
-    
-  #question_votes{:class => "#{vote_class}"}
-    =link_to image_tag('upvote_unselected.png'), question_votes_path(@question, vote_value: 1), remote:true, method: "post", class: "empty-state u-create"
-    =link_to image_tag('upvote_unselected.png'), question_vote_path(@question, vote_value: 1), remote:true, method: "put", class: "downvote-state u-update"
-    =link_to image_tag('upvote_selected.png'), question_vote_path(@question), remote:true, method: "delete", class: "upvote-state u-delete"
-    %h2.vote_count=@question.votes.sum(:value)
-    =link_to image_tag('downvote_unselected.png'), question_votes_path(@question, vote_value: -1), remote:true, method: "post", class: "empty-state d-create"
-    =link_to image_tag('downvote_unselected.png'), question_vote_path(@question, vote_value: -1), remote:true, method: "put", class: "upvote-state d-update"
-    =link_to image_tag('downvote_selected.png'), question_vote_path(@question), remote:true, method: "delete", class: "downvote-state d-delete"
+    -if @question_vote
+      -vote_class = 'downvoted' if @question_vote.value == -1
+      -vote_class = 'upvoted' if @question_vote.value == 1
+    -else
+      -vote_class = 'notvoted'
+      
+    #question_votes{:class => "#{vote_class}"}
+      =link_to image_tag('upvote_unselected.png'), question_votes_path(@question, vote_value: 1), remote:true, method: "post", class: "empty-state u-create"
+      =link_to image_tag('upvote_unselected.png'), question_vote_path(@question, vote_value: 1), remote:true, method: "put", class: "downvote-state u-update"
+      =link_to image_tag('upvote_selected.png'), question_vote_path(@question), remote:true, method: "delete", class: "upvote-state u-delete"
+      %h2.vote_count=@question.votes.sum(:value)
+      =link_to image_tag('downvote_unselected.png'), question_votes_path(@question, vote_value: -1), remote:true, method: "post", class: "empty-state d-create"
+      =link_to image_tag('downvote_unselected.png'), question_vote_path(@question, vote_value: -1), remote:true, method: "put", class: "upvote-state d-update"
+      =link_to image_tag('downvote_selected.png'), question_vote_path(@question), remote:true, method: "delete", class: "downvote-state d-delete"
 
   = render partial: "comments/question_form", locals: { question: @question, question_comment: @question_comment }
   .question_comments
     - @question.comments.each do |comment| 
-      %p 
-        = comment.user_id
+      .comment 
+        = User.find(1).username+": "
         = comment.content
         / = User.find(comment.user_id).username
 
+/ >>>>>>> master
+
+.all_answers
   = render partial: "answers/form", locals: { question: @question, answer: @answer }
-
-
   - Answer.where(question_id: @question.id).each do |answer|
     .answer
       .answer_id{:id => "\#{answer.id}"}
@@ -63,6 +65,26 @@
           =link_to image_tag('downvote_unselected.png'), answer_votes_path(answer, vote_value: -1), remote:true, method: "post", class: "empty-state d-create"
           =link_to image_tag('downvote_unselected.png'), answer_vote_path(answer, vote_value: -1), remote:true, method: "put", class: "upvote-state d-update"
           =link_to image_tag('downvote_selected.png'), answer_vote_path(answer), remote:true, method: "delete", class: "downvote-state d-delete"
+/ =======
+/         %h6= User.find(answer.user_id).username
+/         -if current_user
+/           -vote = Vote.where("user_id = ? and votable_id = ? and votable_type = ?", current_user.id, answer.id, "Answer")
+/           -if vote.any?
+
+/             -vote_class = 'downvoted' if vote.first.value == -1
+/             -vote_class = 'upvoted' if vote.first.value == 1
+/           -else
+/             -vote_class = 'notvoted'
+/           %div{:class => "answer_votes #{vote_class}"}
+/             %h2.vote_count=answer.votes.sum(:value)
+/             =link_to image_tag('upvote_unselected.png'), answer_votes_path(answer, vote_value: 1), remote:true, method: "post", class: "empty-state u-create"
+/             =link_to image_tag('upvote_unselected.png'), answer_vote_path(answer, vote_value: 1), remote:true, method: "put", class: "downvote-state u-update"
+/             =link_to image_tag('upvote_selected.png'), answer_vote_path(answer), remote:true, method: "delete", class: "upvote-state u-delete"
+
+/             =link_to image_tag('downvote_unselected.png'), answer_votes_path(answer, vote_value: -1), remote:true, method: "post", class: "empty-state d-create"
+/             =link_to image_tag('downvote_unselected.png'), answer_vote_path(answer, vote_value: -1), remote:true, method: "put", class: "upvote-state d-update"
+/             =link_to image_tag('downvote_selected.png'), answer_vote_path(answer), remote:true, method: "delete", class: "downvote-state d-delete"
+/ >>>>>>> master
 
 
 
