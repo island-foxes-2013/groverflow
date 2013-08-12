@@ -32,7 +32,6 @@
         = comment.content
         / = User.find(comment.user_id).username
 
-/ >>>>>>> master
 
 .all_answers
   = render partial: "answers/form", locals: { question: @question, answer: @answer }
@@ -46,11 +45,11 @@
         - answer.comments.each do |comment|
           %p
             =comment.content
-
       %h6= User.find(answer.user_id).username
       -if current_user
         -vote = Vote.where("user_id = ? and votable_id = ? and votable_type = ?", current_user.id, answer.id, "Answer")
         -if vote.any?
+
 
           -vote_class = 'downvoted' if vote.first.value == -1
           -vote_class = 'upvoted' if vote.first.value == 1
