@@ -44,6 +44,7 @@ end
 
 gem 'jquery-rails'
 gem 'debugger'
+gem 'awesome_print'
 
 
 
