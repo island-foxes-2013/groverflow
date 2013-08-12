@@ -8,6 +8,7 @@ gem 'nokogiri'
 gem 'pg'
 gem 'thin'
 gem 'haml-rails'
+gem 'sextant'
 
 gem 'rest-client'
 
@@ -25,6 +26,7 @@ end
 
 group :development, :test do
   gem 'annotate'
+  gem 'awesome_print'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'spork'
