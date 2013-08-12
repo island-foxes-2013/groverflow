@@ -1,7 +1,8 @@
+%h4 Leave a comment
 = form_for([question, question_comment]) do |f|
-  =f.text_field :content
-  =f.submit value: 'Comment'
--if flash[:comment_errrors]
-  %ul
-    - flash[:comment_errrors].each do |error|
-      %li=error
+  %p=f.text_area :content
+  %p=f.submit 'Comment', {class: "submit"}
+  -if flash[:comment_errrors]
+    %ul
+      - flash[:comment_errrors].each do |error|
+        %li=error

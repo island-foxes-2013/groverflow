@@ -1,4 +1,4 @@
-= form_for @user do |f|
+= form_for @user, {html: {id: "gen_form"} } do |f|
   .form-title
     %h1 Signup
   %p= f.email_field :email, {class: "text", placeholder: "amazing email"}

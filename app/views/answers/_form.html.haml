@@ -1,14 +1,9 @@
-/ .container
-/   - if @errors
-/     - @errors.each do |error|
-/       %p= error
-/   .col-lg-12
-%h3 Submit an answer!
+%h4 Submit an answer!
 = form_for([question, answer]) do |f|
-  =f.text_field :content
-  =f.submit value: 'Submit Answer'
--if flash[:answer_errors]
-  %ul
-    - flash[:answer_errors].each do |error|
-      %li=error
+  %p=f.text_area :content
+  %p=f.submit 'Submit Answer', {class: "submit"}
+  -if flash[:answer_errors]
+    %ul
+      - flash[:answer_errors].each do |error|
+        %li=error
 

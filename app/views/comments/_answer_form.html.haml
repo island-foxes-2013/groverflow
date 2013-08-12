@@ -1,6 +1,6 @@
-= form_for([answer, answer_comment]) do |f|
-  =f.text_field :content
-  =f.submit value: 'Comment'
+= form_for([answer, answer_comment], {html: {class: "answer_comment_form"} }) do |f|
+  %p=f.text_field :content
+  %p=f.submit 'Comment', {class: "submit"}
 -if flash[:comment_errrors]
   %ul
     - flash[:comment_errrors].each do |error|
