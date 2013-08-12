@@ -43,10 +43,12 @@ describe "user sign up" do
       end
 
       it "goes to /users" do
+        pending
         expect(current_path).to eq '/users'
       end
 
       it "has user fields filled in with previously submitted data" do
+        pending
         expect(find_field('user_email').value).to eq "bad_email"
         expect(find_field('user_username').value).to eq username
       end
