@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :require_login
+
   def current_user=(user)
     session[:user_id] = user.id
   end
@@ -14,4 +16,13 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user, :logged_in?
+
+  private 
+
+  def require_login
+    if !logged_in?
+      flash[:error] = "You must be logged in to perform that action"
+      redirect_to login_path
+    end
+  end
 end
