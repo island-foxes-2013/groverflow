@@ -11,8 +11,21 @@
 }
 
 #question_votes {
+  display: block;
   float: left;
-  width: 20%;
+  width: 19%;
+  padding-left: 5%;
 }
 
+.question_header {
+  display: block;
+  float: right;
+  width: 78%;
+}
 
+.some_dealie form {
+  width: 100% !important;
+  background-color: green;
+  display: block;
+  padding-bottom: 2.3em;
+}
