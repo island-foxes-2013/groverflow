@@ -39,7 +39,7 @@
     = answer.content
     = render partial: "comments/answer_form", locals: { answer: answer, answer_comment: answer.comments.new }
     / %h6= User.find(answer.user_id).username
-    .comments
+    .answer_comments
       - answer.comments.each do |comment|
         %p
           =comment.content
