@@ -8,4 +8,10 @@ $(function() {
     $(this).css("border-color", borderColors[colorIndex]);
     $(this).css("background-color", backgroundColors[colorIndex]);
   });
+
+  $('form').each(function() {
+    var colorIndex = Math.floor(Math.random() * borderColors.length);
+    $(this).css("border-color", borderColors[colorIndex]);
+    $(this).css("background-color", backgroundColors[colorIndex]);
+  });
 });
