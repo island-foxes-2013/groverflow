@@ -7,7 +7,7 @@
     -else
       -vote_class = 'notvoted'
       
-    -if @question_vote
+    -if current_user
       #question_votes{:class => "#{vote_class}"}
         =link_to image_tag('upvote_unselected.png'), question_votes_path(@question, vote_value: 1), remote:true, method: "post", class: "empty-state u-create"
         =link_to image_tag('upvote_unselected.png'), question_vote_path(@question, vote_value: 1), remote:true, method: "put", class: "downvote-state u-update"
