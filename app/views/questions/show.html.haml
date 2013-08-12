@@ -28,7 +28,7 @@
 
 .responses
   .all_answers
-    = render partial: "answers/form", locals: { question: @question, answer: @answer }
+    = render partial: "answers/form", locals: { question: @question, answer: @question.answers.last }
     - Answer.where(question_id: @question.id).each do |answer|
       .answer
         .answer_id{:id => "\#{answer.id}"}
@@ -58,7 +58,7 @@
               =comment.content
         
   .comments_box
-    = render partial: "comments/question_form", locals: { question: @question, question_comment: @question_comment }
+    = render partial: "comments/question_form", locals: { question: @question, question_comment: @question.comments.last }
     .question_comments
       -if @question.comments.all.any?
         - @question.comments.all.each do |comment| 
