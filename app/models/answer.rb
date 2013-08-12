@@ -12,7 +12,7 @@
 #
 
 class Answer < ActiveRecord::Base
-  attr_accessible :content, :user, :best_answer, :question
+  attr_accessible :content, :best_answer, :question
 
   validates :content, :user, :question, presence: true
   validates :question, associated: true
