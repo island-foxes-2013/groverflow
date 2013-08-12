@@ -1,3 +1,9 @@
+@mixin rounded-corners($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
 .question_title {
   color: #00a76d;
   text-shadow: 2px 2px 2px darken(#00a76d, 20);
@@ -38,7 +44,7 @@
   padding: 2em;
   float: right;
   width: 30%;
-
+  @include rounded_corners(5px)
 }
 
 .all_answers {
@@ -49,6 +55,7 @@
   margin: 1em;
   padding: 1em 2em;
   background-color: pink;
+  @include rounded_corners(5px)
 }
 
 .answer_form {
@@ -59,19 +66,14 @@
   min-height: 300px;
   margin-bottom: 20px;
   background-color: black;
+  @include rounded_corners(10px)
 }
 
-.question_comments {
-  margin-top: 20px;
-  background-color: yellow;
-  padding: 2em;
-  float: right;
-  width: 40%;
-
-}
-
-.comment {
-  margin: 1em;
-  padding: 1em 2em;
-  background-color: pink;
+.answer_comment {
+  background-color: grey;
+  margin: .2em;
+  padding: .5em 2em;
+  margin-left: 20%;
+  margin-right: 20px;
+  @include rounded_corners(5px)
 }
